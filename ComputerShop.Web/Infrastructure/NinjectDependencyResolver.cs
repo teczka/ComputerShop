@@ -1,4 +1,7 @@
-﻿using Ninject;
+﻿using ComputerShop.Core.Domain;
+using ComputerShop.Core.Repositories;
+using ComputerShop.Infrastructure.Repositories;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +32,7 @@ namespace ComputerShop.Web.Infrastructure
 
         public void AddBindings()
         {
-
+            kernel.Bind<IRepository<User>>().To<UserRepository>();
         }
     }
 }
