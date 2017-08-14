@@ -20,7 +20,24 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    @if (WebSecurity.IsAuthenticated == true)
+                    {
+                        if (System.Web.Security.Roles.IsUserInRole(ComputerShop.Core.Enums.ShopRoles.Admin.ToString()))
+                        {
+                            <li><a href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-wrench"></span> Panel Administratora</a></li>
+                        }
+                        <li><a href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
+                        <li><a href="@Url.Action("Logout","Account")"><span class="glyphicon glyphicon-log-out"></span> Wyloguj się</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
+                        <li><a href="@Url.Action("Login","Account")"><span class="glyphicon glyphicon-log-in"></span> Zaloguj się</a></li>
+                    }
+                    
+                    
                 </ul>
             </div>
         </div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using WebMatrix.WebData;
 
 namespace ComputerShop.Web
 {
@@ -13,6 +14,7 @@ namespace ComputerShop.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            WebSecurity.InitializeDatabaseConnection("ComputerShopContext", "Users", "Id", "Email", true);
         }
     }
 }

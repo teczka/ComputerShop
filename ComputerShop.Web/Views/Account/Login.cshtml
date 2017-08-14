@@ -1,0 +1,34 @@
+﻿@model ComputerShop.Web.Models.AccountViewModels.UserLoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form method="post">
+
+                    <!-- Section for login name input-->
+                    <div class="form-group">
+                        <label for="login">Wpisz login* :</label><br />
+                        <input name="email" type="email" value="@Model.Email" />
+                    </div>
+
+                    <!-- Section for password input -->
+                    <div class="form-group">
+                        <label for="password">Wpisz hasło* :</label><br />
+                        <input name="password" type="password" value="@Model.Password" />
+                    </div>
+                    <p class="red">* - Pole wymagane</p>
+                    <!-- Input button to log in to system -->
+                    <input type="submit" value="Wejdź" class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
+    }
+
+</div>
+

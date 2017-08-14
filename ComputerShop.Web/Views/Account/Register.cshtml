@@ -1,0 +1,49 @@
+﻿@model ComputerShop.Web.Models.AccountViewModels.UserRegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class='col-sm-4 col-sm-offset-4'>
+                <h2>Zarejestruj się</h2>
+                <div class="form-group">
+                    <label for="email">E-mail* :</label><br />
+                    <input name="email" type="email" class="form-control" value="@Model.Email" required />
+                </div>
+            </div>
+            <div class='col-sm-4 col-sm-offset-4'>
+                <div class="form-group">
+                    <label for="password">Hasło* :</label><br />
+                    <input name="password" type="password" class="form-control" value="@Model.Password" required />
+                </div>
+            </div>
+            <div class='col-sm-4 col-sm-offset-4'>
+                <div class="form-group">
+                    <label for="name">Imię* :</label>
+                    <input name="name" type="text" class="form-control" value="@Model.Name" required />
+                </div>
+            </div>
+            <div class='col-sm-4 col-sm-offset-4'>
+                <div class="form-group">
+                    <label for="surname">Nazwisko* :</label><br />
+                    <input name="surname" type="text" class="form-control" value="@Model.Surname" required />
+                </div>
+            </div>
+            <div class='col-sm-4 col-sm-offset-4'>
+                <div class="form-group">
+                    <label for="phone_number">Numer telefonu:</label>
+                    <input name="phonenumber" type="number" class="form-control" value="@Model.PhoneNumber" required pattern="[\d]{3}-[\d]{3}-[\d]{3}" /><br />
+                    <input type="submit" class="btn btn-primary" value="Zatwierdź" />
+                </div>
+            </div>
+            <div class="col-sm-4 col-sm-offset-4">
+                <p class="red">* - Pole wymagane</p>
+            </div>
+        </div>
+
+    }
+</div>
+
