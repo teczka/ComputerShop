@@ -2,42 +2,41 @@
 using ComputerShop.Core.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ComputerShop.Infrastructure.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class FeatureRepository : IRepository<Feature>
     {
         private readonly ComputerShopContext context;
 
-        public UserRepository(ComputerShopContext context)
+        public FeatureRepository(ComputerShopContext context)
         {
             this.context = context;
         }
-        
-        public IEnumerable<User> GetAll()
+
+        public IEnumerable<Feature> GetAll()
         {
-            return context.Users.AsEnumerable();
+            return context.Features.AsEnumerable();
         }
 
-        public User Get(int id)
+        public Feature Get(int id)
         {
-            return context.Users.SingleOrDefault(e => e.Id == id);
+            return context.Features.SingleOrDefault(e => e.Id == id);
         }
-        
-        public void Insert(User entity)
+
+        public void Insert(Feature entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Add(entity);
+            context.Features.Add(entity);
             context.SaveChanges();
         }
-        public void Update(User entity)
+        public void Update(Feature entity)
         {
             if (entity == null)
             {
@@ -45,23 +44,23 @@ namespace ComputerShop.Infrastructure.Repositories
             }
             context.SaveChanges();
         }
-        public void Delete(User entity)
+        public void Delete(Feature entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Remove(entity);
+            context.Features.Remove(entity);
             context.SaveChanges();
         }
 
-        public void Remove(User entity)
+        public void Remove(Feature entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Remove(entity);
+            context.Features.Remove(entity);
         }
 
         public void SaveChanges()

@@ -26,7 +26,7 @@
                     {
                         if (System.Web.Security.Roles.IsUserInRole(ComputerShop.Core.Enums.ShopRoles.Admin.ToString()))
                         {
-                            <li><a href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-wrench"></span> Panel Administratora</a></li>
+                            <li><a href="@Url.Action("Index","Admin")"><span class="glyphicon glyphicon-wrench"></span> Panel Administratora</a></li>
                         }
                         <li><a href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
                         <li><a href="@Url.Action("Logout","Account")"><span class="glyphicon glyphicon-log-out"></span> Wyloguj się</a></li>

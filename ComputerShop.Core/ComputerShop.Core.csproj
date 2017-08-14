@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Category.cs" />
+    <Compile Include="Domain\Feature.cs" />
+    <Compile Include="Domain\FeatureValue.cs" />
+    <Compile Include="Domain\Group.cs" />
+    <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Enums\ShopRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

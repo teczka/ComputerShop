@@ -2,42 +2,41 @@
 using ComputerShop.Core.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ComputerShop.Infrastructure.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class GroupRepository : IRepository<Group>
     {
         private readonly ComputerShopContext context;
 
-        public UserRepository(ComputerShopContext context)
+        public GroupRepository(ComputerShopContext context)
         {
             this.context = context;
         }
-        
-        public IEnumerable<User> GetAll()
+
+        public IEnumerable<Group> GetAll()
         {
-            return context.Users.AsEnumerable();
+            return context.Groups.AsEnumerable();
         }
 
-        public User Get(int id)
+        public Group Get(int id)
         {
-            return context.Users.SingleOrDefault(e => e.Id == id);
+            return context.Groups.SingleOrDefault(e => e.Id == id);
         }
-        
-        public void Insert(User entity)
+
+        public void Insert(Group entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Add(entity);
+            context.Groups.Add(entity);
             context.SaveChanges();
         }
-        public void Update(User entity)
+        public void Update(Group entity)
         {
             if (entity == null)
             {
@@ -45,23 +44,23 @@ namespace ComputerShop.Infrastructure.Repositories
             }
             context.SaveChanges();
         }
-        public void Delete(User entity)
+        public void Delete(Group entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Remove(entity);
+            context.Groups.Remove(entity);
             context.SaveChanges();
         }
 
-        public void Remove(User entity)
+        public void Remove(Group entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Remove(entity);
+            context.Groups.Remove(entity);
         }
 
         public void SaveChanges()

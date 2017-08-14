@@ -8,5 +8,10 @@ namespace ComputerShop.Infrastructure
         public ComputerShopContext() : base("ComputerShopContext") { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Feature> Features { get; set; }
+        public DbSet<FeatureValue> FeatureValues { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }

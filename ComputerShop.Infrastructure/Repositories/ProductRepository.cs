@@ -2,42 +2,41 @@
 using ComputerShop.Core.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ComputerShop.Infrastructure.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class ProductRepository : IRepository<Product>
     {
         private readonly ComputerShopContext context;
 
-        public UserRepository(ComputerShopContext context)
+        public ProductRepository(ComputerShopContext context)
         {
             this.context = context;
         }
-        
-        public IEnumerable<User> GetAll()
+
+        public IEnumerable<Product> GetAll()
         {
-            return context.Users.AsEnumerable();
+            return context.Products.AsEnumerable();
         }
 
-        public User Get(int id)
+        public Product Get(int id)
         {
-            return context.Users.SingleOrDefault(e => e.Id == id);
+            return context.Products.SingleOrDefault(e => e.Id == id);
         }
-        
-        public void Insert(User entity)
+
+        public void Insert(Product entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Add(entity);
+            context.Products.Add(entity);
             context.SaveChanges();
         }
-        public void Update(User entity)
+        public void Update(Product entity)
         {
             if (entity == null)
             {
@@ -45,23 +44,23 @@ namespace ComputerShop.Infrastructure.Repositories
             }
             context.SaveChanges();
         }
-        public void Delete(User entity)
+        public void Delete(Product entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Remove(entity);
+            context.Products.Remove(entity);
             context.SaveChanges();
         }
 
-        public void Remove(User entity)
+        public void Remove(Product entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Users.Remove(entity);
+            context.Products.Remove(entity);
         }
 
         public void SaveChanges()
