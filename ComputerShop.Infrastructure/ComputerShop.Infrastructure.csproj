@@ -75,9 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComputerShopContext.cs" />
-    <Compile Include="Migrations\201708141835383_first.cs" />
-    <Compile Include="Migrations\201708141835383_first.Designer.cs">
-      <DependentUpon>201708141835383_first.cs</DependentUpon>
+    <Compile Include="Migrations\201708161414507_160817.cs" />
+    <Compile Include="Migrations\201708161414507_160817.Designer.cs">
+      <DependentUpon>201708161414507_160817.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +88,7 @@
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AdminService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -103,8 +104,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708141835383_first.resx">
-      <DependentUpon>201708141835383_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708161414507_160817.resx">
+      <DependentUpon>201708161414507_160817.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ namespace ComputerShop.Infrastructure.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first : DbMigration
+    public partial class _160817 : DbMigration
     {
         public override void Up()
         {
@@ -36,6 +36,20 @@ namespace ComputerShop.Infrastructure.Migrations
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.FeatureValueForProducts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ProductId = c.Int(nullable: false),
+                        FeatureValueId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.FeatureValues", t => t.FeatureValueId, cascadeDelete: true)
+                .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
+                .Index(t => t.ProductId)
+                .Index(t => t.FeatureValueId);
             
             CreateTable(
                 "dbo.FeatureValues",
@@ -78,15 +92,20 @@ namespace ComputerShop.Infrastructure.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.FeatureValueForProducts", "ProductId", "dbo.Products");
             DropForeignKey("dbo.Products", "CategoryId", "dbo.Categories");
+            DropForeignKey("dbo.FeatureValueForProducts", "FeatureValueId", "dbo.FeatureValues");
             DropForeignKey("dbo.FeatureValues", "FeatureId", "dbo.Features");
             DropForeignKey("dbo.Categories", "GroupId", "dbo.Groups");
             DropIndex("dbo.Products", new[] { "CategoryId" });
             DropIndex("dbo.FeatureValues", new[] { "FeatureId" });
+            DropIndex("dbo.FeatureValueForProducts", new[] { "FeatureValueId" });
+            DropIndex("dbo.FeatureValueForProducts", new[] { "ProductId" });
             DropIndex("dbo.Categories", new[] { "GroupId" });
             DropTable("dbo.Users");
             DropTable("dbo.Products");
             DropTable("dbo.FeatureValues");
+            DropTable("dbo.FeatureValueForProducts");
             DropTable("dbo.Features");
             DropTable("dbo.Groups");
             DropTable("dbo.Categories");

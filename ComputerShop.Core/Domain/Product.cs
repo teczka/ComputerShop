@@ -14,6 +14,6 @@ namespace ComputerShop.Core.Domain
         public int CategoryId { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual IEnumerable<FeatureValue> FeatureValues { get; set; }
+        public virtual IEnumerable<FeatureValueForProduct> FeatureValuesForProduct { get; set; }
     }
 }

@@ -1,0 +1,23 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.AddNewGroupViewModel
+@{
+    ViewBag.Title = "AddNewGroup";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h2>Dodaj nową grupę</h2>
+                <div class="form-group">
+                    <label for="login">Podaj nazwę nowej grupy</label><br />
+                    <input name="groupName" type="text" class="form-control" value="@Model.GroupName" />
+                </div>
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+

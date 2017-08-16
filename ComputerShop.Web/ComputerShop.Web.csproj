@@ -149,6 +149,7 @@
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\AccountViewModels\UserLoginViewModel.cs" />
     <Compile Include="Models\AccountViewModels\UserRegisterViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\AddNewGroupViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\GroupsPanel.cshtml" />
+    <Content Include="Views\Admin\AddNewGroup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

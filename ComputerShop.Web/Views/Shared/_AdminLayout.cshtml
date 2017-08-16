@@ -11,19 +11,57 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class=" container">
             <div class="navbar-header">
-                Panel Administratora
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+                @Html.ActionLink("Panel Admina", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <ul class="nav navbar-nav">
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-            @RenderBody()
+           <div class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                   <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Grupy i kategorie <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("GroupsPanel", "Admin")">Edycja grup</a></li>
+                        <li><a href="#">Edycja kategorii</a></li>
+                    </ul>
+                   </li>
+                   <li class="dropdown">
+                       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Produkty i cechy <span class="caret"></span></a>
+                       <ul class="dropdown-menu">
+                           <li><a href="#">Edycja produktów</a></li>
+                           <li><a href="#">Edycja cech</a></li>
+                       </ul>
+                   </li>
+               </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    @if (WebSecurity.IsAuthenticated == true)
+                    {
+                        if (System.Web.Security.Roles.IsUserInRole(ComputerShop.Core.Enums.ShopRoles.Admin.ToString()))
+                        {
+                            <li><a href="@Url.Action("Index","Admin")"><span class="glyphicon glyphicon-wrench"></span> </a></li>
+                        }
+                        <li><a href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-user"></span> Moje konto</a></li>
+                        <li><a href="@Url.Action("Logout","Account")"><span class="glyphicon glyphicon-log-out"></span> Wyloguj się</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-user"></span> Zarejestruj się</a></li>
+                        <li><a href="@Url.Action("Login","Account")"><span class="glyphicon glyphicon-log-in"></span> Zaloguj się</a></li>
+                    }
+                    
+                    
+                </ul>
+            </div>
         </div>
     </div>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Sklep komputerowy - Paweł Tetke</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
