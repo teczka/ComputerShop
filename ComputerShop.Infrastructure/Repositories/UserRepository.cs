@@ -43,6 +43,7 @@ namespace ComputerShop.Infrastructure.Repositories
             {
                 throw new ArgumentNullException("entity");
             }
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             context.SaveChanges();
         }
         public void Delete(User entity)

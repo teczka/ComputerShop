@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ComputerShop.Core.Domain.Category>
+@{
+    ViewBag.Title = "CategoriesPanel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2>Zarządzanie grupami</h2>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nazwa kategorii</th>
+                        <th>Przypisana grupa</th>
+                        <th>Opcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.CategoryName</th>
+                            <th>@item.Group.GroupName</th>
+                            <th>
+                                @Html.ActionLink("Edytuj", "EditCategory", "Admin", new { groupId = item.Id }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Usuń", "DeleteCategory", "Admin", new { groupId = item.Id }, new { @class = "btn btn-danger" })
+                        </th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="@Url.Action("AddNewCategory", "Admin")" class="btn btn-primary" role="button">Dodaj nową kategorię</a>
+        </div>
+    </div>
+</div>
+

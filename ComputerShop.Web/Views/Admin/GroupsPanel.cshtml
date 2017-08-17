@@ -20,7 +20,8 @@
                     {
                         <tr>
                             <th>@item.GroupName</th>
-                            <th>Button</th>
+                            <th>@Html.ActionLink("Edytuj", "EditGroup", "Admin", new { groupId = item.Id }, new { @class = "btn btn-warning" }) 
+                                @Html.ActionLink("Usuń","DeleteGroup", "Admin", new { groupId = item.Id }, new { @class = "btn btn-danger" })</th>
                         </tr>
                     }
                 </tbody>

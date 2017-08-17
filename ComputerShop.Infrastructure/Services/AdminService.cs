@@ -19,6 +19,8 @@ namespace ComputerShop.Infrastructure.Services
             this.categoryRepo = categoryRepo;
         }
 
+
+        //Metody dla Grup
         public IEnumerable<Group> GetAllGroups()
         {
             return groupRepo.GetAll();
@@ -34,11 +36,42 @@ namespace ComputerShop.Infrastructure.Services
             groupRepo.Insert(group);
         }
 
+        public void EditGroup(Group group)
+        {
+            groupRepo.Update(group);
+        }
+
+        public void DeleteGroup(int groupId)
+        {
+            var localGroup = GetGroupById(groupId);
+            groupRepo.Delete(localGroup);
+        }
+
+        //Metody dla Kategorii
         public IEnumerable<Category> GetAllCategories()
         {
             return categoryRepo.GetAll();
         }
 
+        public Category GetCategoryById(int id)
+        {
+            return categoryRepo.Get(id);
+        }
 
+        public void AddNewCategory(Category category)
+        {
+            categoryRepo.Insert(category);
+        }
+
+        public void EditCategory(Category category)
+        {
+            categoryRepo.Update(category);
+        }
+
+        public void DeleteCategory(int categoryId)
+        {
+            var localCategory = GetCategoryById(categoryId);
+            categoryRepo.Delete(localCategory);
+        }
     }
 }
