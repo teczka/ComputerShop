@@ -1,0 +1,25 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.EditProducentViewModel
+
+@{
+    ViewBag.Title = "EditProducent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h2>Edytuj nazwę producenta</h2>
+                <div class="form-group">
+                    <label for="login">Podaj nową nazwę producenta</label><br />
+                    <input name="producentName" type="text" class="form-control" value="@Model.ProducentName" />
+                    <input class="hidden" name="Id" value="@Model.Id" />
+                </div>
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+

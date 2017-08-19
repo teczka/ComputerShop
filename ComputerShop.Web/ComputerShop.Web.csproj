@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -150,8 +151,14 @@
     <Compile Include="Models\AccountViewModels\UserLoginViewModel.cs" />
     <Compile Include="Models\AccountViewModels\UserRegisterViewModel.cs" />
     <Compile Include="Models\AdminViewModels\AddNewCategoryViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\AddNewFeatureViewModel.cs" />
     <Compile Include="Models\AdminViewModels\AddNewGroupViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\AddNewProducentViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\EditCategoryViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\EditFeatureValueViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\EditFeatureViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditGroupViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\EditProducentViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +178,14 @@
     <Content Include="Views\Admin\EditGroup.cshtml" />
     <Content Include="Views\Admin\CategoriesPanel.cshtml" />
     <Content Include="Views\Admin\AddNewCategory.cshtml" />
+    <Content Include="Views\Admin\EditCategory.cshtml" />
+    <Content Include="Views\Admin\ProducentsPanel.cshtml" />
+    <Content Include="Views\Admin\AddNewProducent.cshtml" />
+    <Content Include="Views\Admin\EditProducent.cshtml" />
+    <Content Include="Views\Admin\FeaturesPanel.cshtml" />
+    <Content Include="Views\Admin\AddNewFeature.cshtml" />
+    <Content Include="Views\Admin\EditFeature.cshtml" />
+    <Content Include="Views\Admin\EditFeatureValue.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

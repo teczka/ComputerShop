@@ -7,12 +7,12 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
-            <h2>Zarządzanie grupami</h2>
+            <h2>Zarządzanie kategoriami</h2>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Nazwa kategorii</th>
-                        <th>Przypisana grupa</th>
+                        <th>Przypisana do grupy</th>
                         <th>Opcje</th>
                     </tr>
                 </thead>
@@ -23,8 +23,8 @@
                             <th>@item.CategoryName</th>
                             <th>@item.Group.GroupName</th>
                             <th>
-                                @Html.ActionLink("Edytuj", "EditCategory", "Admin", new { groupId = item.Id }, new { @class = "btn btn-warning" })
-                                @Html.ActionLink("Usuń", "DeleteCategory", "Admin", new { groupId = item.Id }, new { @class = "btn btn-danger" })
+                                @Html.ActionLink("Edytuj", "EditCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Usuń", "DeleteCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-danger" })
                         </th>
                     </tr>
                     }

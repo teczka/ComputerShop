@@ -12,8 +12,11 @@ namespace ComputerShop.Core.Domain
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
+        public int ProducentId { get; set; }
+        public bool IsComponent { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual IEnumerable<FeatureValueForProduct> FeatureValuesForProduct { get; set; }
+        public virtual Producent Producent { get; set; }
     }
 }

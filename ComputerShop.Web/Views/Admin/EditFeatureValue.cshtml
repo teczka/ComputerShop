@@ -1,0 +1,24 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.EditFeatureValueViewModel
+@{
+    ViewBag.Title = "EditFeatureValue";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h2>Edytuj nazwę wartości cechy</h2>
+                <div class="form-group">
+                    <label for="login">Podaj nową nazwę</label><br />
+                    <input name="featureValuename" type="text" class="form-control" value="@Model.FeatureValueName" />
+                    <input class="hidden" name="Id" value="@Model.Id" />
+                </div>
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+

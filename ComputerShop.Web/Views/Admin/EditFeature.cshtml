@@ -1,0 +1,62 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.EditFeatureViewModel
+@{
+    ViewBag.Title = "EditFeature";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+        <div class="row">
+            <div class="col-sm-4">
+                <br />
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Przypisane wartości dla cechy</th>
+                            <th>Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.FeatureValues)
+                        {
+                            <tr>
+                                <th>
+                                    @item.Name
+                                </th>
+                                <th>
+                                    <a href="@Url.Action("EditFeatureValue", "Admin", new { featureValueId = item.Id })" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="@Url.Action("DeleteFeatureValue", "Admin", new { featureValueId = item.Id, featureId = item.FeatureId })" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                                </th>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-sm-4">
+                @using(Html.BeginForm("EditFeature", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <br />
+                        <label for="login">Podaj nową nazwę cechy</label><br />
+                        <input name="featureName" type="text" class="form-control" value="@Model.FeatureName" />
+                        <input class="hidden" name="FeatureId" value="@Model.FeatureId" /><br />
+                        <input type="submit" value="Zapisz" class="btn btn-primary" />
+                    </div>
+                }
+                @using (Html.BeginForm("AddNewFeatureValue", "Admin", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <br />
+                        <label for="login">Podaj nową nazwę wartości cechy</label><br />
+                        <input name="featureValueName" type="text" class="form-control" value="@Model.FeatureValueName" />
+                        <input class="hidden" name="FeatureId" value="@Model.FeatureId" />
+                        <br />
+                        <input type="submit" value="Zapisz" class="btn btn-primary" />
+                    </div>
+                }
+            </div>
+                
+        </div>
+</div>
+

@@ -12,11 +12,18 @@ namespace ComputerShop.Infrastructure.Services
     {
         private GroupRepository groupRepo;
         private CategoryRepository categoryRepo;
+        private ProducentRepository producentRepo;
+        private FeatureRepository featureRepo;
+        private FeatureValueRepository featureValueRepo;
 
-        public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo)
+        public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo, ProducentRepository producentRepo,
+                            FeatureRepository featureRepo, FeatureValueRepository featureValueRepo)
         {
             this.groupRepo = groupRepo;
             this.categoryRepo = categoryRepo;
+            this.producentRepo = producentRepo;
+            this.featureRepo = featureRepo;
+            this.featureValueRepo = featureValueRepo;
         }
 
 
@@ -72,6 +79,86 @@ namespace ComputerShop.Infrastructure.Services
         {
             var localCategory = GetCategoryById(categoryId);
             categoryRepo.Delete(localCategory);
+        }
+
+        //Metody dla producentów
+        public IEnumerable<Producent> GetAllProducents()
+        {
+            return producentRepo.GetAll();
+        }
+
+        public Producent GetProducentById(int id)
+        {
+            return producentRepo.Get(id);
+        }
+
+        public void AddNewProducent(Producent producent)
+        {
+            producentRepo.Insert(producent);
+        }
+
+        public void EditProducent(Producent producent)
+        {
+            producentRepo.Update(producent);
+        }
+
+        public void DeleteProducent(int producentId)
+        {
+            var localProducent = GetProducentById(producentId);
+            producentRepo.Delete(localProducent);
+        }
+
+        //Metody dla cech
+        public IEnumerable<Feature> GetAllFeatures()
+        {
+            return featureRepo.GetAll();
+        }
+
+        public Feature GetFeatureById(int id)
+        {
+            return featureRepo.Get(id);
+        }
+
+        public void AddNewFeature(Feature feature)
+        {
+            featureRepo.Insert(feature);
+        }
+
+        public void EditFeature(Feature feature)
+        {
+            featureRepo.Update(feature);
+        }
+
+        public void DeleteFeature(int id)
+        {
+            var localFeature = GetFeatureById(id);
+            featureRepo.Delete(localFeature);
+        }
+
+        public IEnumerable<FeatureValue> GetFeatureValuesForFeatureId(int featureId)
+        {
+            return featureValueRepo.GetAll().Where(f => f.FeatureId == featureId);
+        }
+
+        public FeatureValue GetFeatureValueById(int id)
+        {
+            return featureValueRepo.Get(id);
+        }
+
+        public void AddNewFeatureValue(FeatureValue featureValue)
+        {
+            featureValueRepo.Insert(featureValue);
+        }
+
+        public void EditFeatureValue(FeatureValue featureValue)
+        {
+            featureValueRepo.Update(featureValue);
+        }
+
+        public void DeleteFeatureValue(int featureValueId)
+        {
+            var localFeatureValue = featureValueRepo.Get(featureValueId);
+            featureValueRepo.Delete(localFeatureValue);
         }
     }
 }

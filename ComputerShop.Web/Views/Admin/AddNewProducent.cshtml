@@ -1,0 +1,23 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.AddNewProducentViewModel
+@{
+    ViewBag.Title = "AddNewProducent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h2>Dodaj nowego producenta</h2>
+                <div class="form-group">
+                    <label for="login">Podaj nazwę nowego producenta</label><br />
+                    <input name="producentName" type="text" class="form-control"/>
+                </div>
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+

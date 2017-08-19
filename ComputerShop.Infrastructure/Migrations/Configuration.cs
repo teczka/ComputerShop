@@ -31,6 +31,10 @@ namespace ComputerShop.Infrastructure.Migrations
             {
                 rolesProvider.CreateRole("Customer");
             }
+            if (!rolesProvider.RoleExists("Seller"))
+            {
+                rolesProvider.CreateRole("Seller");
+            }
             //Add admin account
             if (!WebSecurity.UserExists("admin@admin.pl"))
             {

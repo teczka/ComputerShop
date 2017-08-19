@@ -46,6 +46,7 @@
     <Compile Include="Domain\FeatureValue.cs" />
     <Compile Include="Domain\FeatureValueForProduct.cs" />
     <Compile Include="Domain\Group.cs" />
+    <Compile Include="Domain\Producent.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Enums\ShopRoles.cs" />

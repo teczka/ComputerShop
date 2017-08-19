@@ -1,0 +1,32 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.EditCategoryViewModel
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h2>Dodaj nową kategorię</h2>
+                <div class="form-group">
+                    <label for="login">Podaj nazwę nowej kategorii</label><br />
+                    <input name="CategoryName" type="text" class="form-control" value="@Model.CategoryName" />
+
+                    <label for="AssignedToGroupId">Wybierz grupę do której należy kategoria:</label>
+                    <select class="form-control" id="AssignedToGroupId" name="AssignedToGroupId">
+                        @foreach (var item in Model.AllGroups)
+                        {
+                            <option value="@item.Id">@item.GroupName</option>
+                        }
+                    </select>
+                    <input class="hidden" name="Id" value="@Model.Id" />
+                </div>
+                <input type="submit" value="Dodaj" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+

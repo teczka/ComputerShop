@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ComputerShop.Core.Domain.Feature>
+@{
+    ViewBag.Title = "FeaturesPanel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h2>Zarządzanie cechami produktów</h2>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nazwa cechy</th>
+                        <th>Opcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.Name</th>
+                            <th>
+                                @Html.ActionLink("Edytuj cechę i wartości", "EditFeature", "Admin", new { featureId = item.Id }, new { @class = "btn btn-warning" })
+                                @Html.ActionLink("Usuń", "DeleteFeature", "Admin", new { featureId = item.Id }, new { @class = "btn btn-danger" })
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="@Url.Action("AddNewFeature", "Admin")" class="btn btn-primary" role="button">Dodaj nową cechę produktu</a>
+        </div>
+    </div>
+</div>
+
