@@ -82,7 +82,7 @@ namespace ComputerShop.Web.Controllers
         [HttpPost]
         public ActionResult AddNewCategory(AddNewCategoryViewModel model)
         {
-            adminService.AddNewCategory(new Category() { CategoryName = model.CategoryName, GroupId = model.AssignedToGroupId });
+            adminService.AddNewCategory(new Category() { CategoryName = model.CategoryName, GroupId = model.AssignedToGroupId, IsAssemblyCategory = model.IsAssembly });
             return RedirectToAction(nameof(CategoriesPanel));
         }
 
@@ -91,13 +91,13 @@ namespace ComputerShop.Web.Controllers
         {
             Category localCategory = adminService.GetCategoryById(categoryId);
             var groups = adminService.GetAllGroups();
-            return View(new EditCategoryViewModel() { CategoryName = localCategory.CategoryName, Id = categoryId, AllGroups = groups });
+            return View(new EditCategoryViewModel() { CategoryName = localCategory.CategoryName, Id = categoryId, AllGroups = groups, IsAssembly = localCategory.IsAssemblyCategory });
         }
 
         [HttpPost]
         public ActionResult EditCategory(EditCategoryViewModel model)
         {
-            adminService.EditCategory(new Category() { CategoryName = model.CategoryName, Id = model.Id, GroupId = model.AssignedToGroupId });
+            adminService.EditCategory(new Category() { CategoryName = model.CategoryName, Id = model.Id, GroupId = model.AssignedToGroupId, IsAssemblyCategory = model.IsAssembly });
             return RedirectToAction(nameof(CategoriesPanel));
         }
 

@@ -7,13 +7,13 @@ namespace ComputerShop.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _180817 : IMigrationMetadata
+    public sealed partial class _1908 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_180817));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_1908));
         
         string IMigrationMetadata.Id
         {
-            get { return "201708181155490_180817"; }
+            get { return "201708191428143_1908"; }
         }
         
         string IMigrationMetadata.Source

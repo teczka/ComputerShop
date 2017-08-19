@@ -3,7 +3,7 @@ namespace ComputerShop.Infrastructure.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _180817 : DbMigration
+    public partial class _1908 : DbMigration
     {
         public override void Up()
         {
@@ -14,6 +14,7 @@ namespace ComputerShop.Infrastructure.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         CategoryName = c.String(),
                         GroupId = c.Int(nullable: false),
+                        IsAssemblyCategory = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Groups", t => t.GroupId, cascadeDelete: true)

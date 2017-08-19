@@ -13,6 +13,7 @@
                     <tr>
                         <th>Nazwa kategorii</th>
                         <th>Przypisana do grupy</th>
+                        <th>Kategoria montażowa</th>
                         <th>Opcje</th>
                     </tr>
                 </thead>
@@ -22,6 +23,7 @@
                         <tr>
                             <th>@item.CategoryName</th>
                             <th>@item.Group.GroupName</th>
+                            <th>@item.IsAssemblyCategory</th>
                             <th>
                                 @Html.ActionLink("Edytuj", "EditCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-warning" })
                                 @Html.ActionLink("Usuń", "DeleteCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-danger" })

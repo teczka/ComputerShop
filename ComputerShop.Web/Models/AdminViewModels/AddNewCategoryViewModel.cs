@@ -12,6 +12,7 @@ namespace ComputerShop.Web.Models.AdminViewModels
         [Required]
         public string CategoryName { get; set; }
         public int AssignedToGroupId { get; set; }
+        public bool IsAssembly { get; set; }
         public IEnumerable<Group> AllGroups { get; set; }
     }
 }

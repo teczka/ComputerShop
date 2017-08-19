@@ -14,7 +14,8 @@
                 <div class="form-group">
                     <label for="login">Podaj nazwę nowej kategorii</label><br />
                     <input name="CategoryName" type="text" class="form-control" value="@Model.CategoryName" />
-
+                    <label for="IsAssembly">Czy kategoria jest montażowa</label>
+                    @Html.CheckBoxFor(m => m.IsAssembly)
                     <label for="AssignedToGroupId">Wybierz grupę do której należy kategoria:</label>
                     <select class="form-control" id="AssignedToGroupId" name="AssignedToGroupId">
                         @foreach (var item in Model.AllGroups)
