@@ -218,5 +218,31 @@ namespace ComputerShop.Web.Controllers
             adminService.DeleteFeatureValue(featureValueId);
             return RedirectToAction("EditFeature", new { featureId = featureId });
         }
+
+        //Akcje łączenie cech z kategoriami
+        public ActionResult ConnectFeaturesToCategory(int categoryId)
+        {
+            var featuresAssignedToCategory = adminService.GetAllFeaturesAssignedForCategory(categoryId);
+            var featuresNotAssignedToCategory = adminService.GetAllFeaturesNotAssignedForCategory(categoryId);
+            var model = new EditFeaturesForCategoriesViewModel()
+            {
+                Category = adminService.GetCategoryById(categoryId),
+                FeaturesAssignedToCategory = featuresAssignedToCategory,
+                FeaturesNotAssignedToCategory = featuresNotAssignedToCategory
+            };
+            return View(model);
+        }
+
+        public ActionResult AssignFeaturesToCategory(EditFeaturesForCategoriesViewModel model)
+        {
+            adminService.AssignFeaturesToCategory(model.CategoryId, model.SelectedFeaturesId);
+            return RedirectToAction("ConnectFeaturesToCategory", new { categoryId = model.CategoryId });
+        }
+
+        public ActionResult UnassignFeaturesFromCategory(EditFeaturesForCategoriesViewModel model)
+        {
+            adminService.DeleteAssignFeaturesToCategory(model.CategoryId, model.SelectedFeaturesId);
+            return RedirectToAction("ConnectFeaturesToCategory", new { categoryId = model.CategoryId });
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace ComputerShop.Infrastructure.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201708191428143_1908"; }
+            get { return "201708191520430_1908"; }
         }
         
         string IMigrationMetadata.Source

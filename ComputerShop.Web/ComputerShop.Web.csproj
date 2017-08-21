@@ -155,6 +155,7 @@
     <Compile Include="Models\AdminViewModels\AddNewGroupViewModel.cs" />
     <Compile Include="Models\AdminViewModels\AddNewProducentViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditCategoryViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\EditFeaturesForCategoriesViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditFeatureValueViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditFeatureViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditGroupViewModel.cs" />
@@ -186,6 +187,7 @@
     <Content Include="Views\Admin\AddNewFeature.cshtml" />
     <Content Include="Views\Admin\EditFeature.cshtml" />
     <Content Include="Views\Admin\EditFeatureValue.cshtml" />
+    <Content Include="Views\Admin\ConnectFeaturesToCategory.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

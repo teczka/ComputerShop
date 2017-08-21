@@ -25,8 +25,11 @@
                             <th>@item.Group.GroupName</th>
                             <th>@item.IsAssemblyCategory</th>
                             <th>
-                                @Html.ActionLink("Edytuj", "EditCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-warning" })
-                                @Html.ActionLink("Usuń", "DeleteCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-danger" })
+                                <div class="btn-group">
+                                    @Html.ActionLink("Dołącz cechy", "ConnectFeaturesToCategory", "Admin", new { categoryId = item.Id } , new { @class = "btn btn-info" })
+                                    @Html.ActionLink("Edytuj", "EditCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-warning" })
+                                    @Html.ActionLink("Usuń", "DeleteCategory", "Admin", new { categoryId = item.Id }, new { @class = "btn btn-danger" })
+                                </div>      
                         </th>
                     </tr>
                     }

@@ -15,15 +15,17 @@ namespace ComputerShop.Infrastructure.Services
         private ProducentRepository producentRepo;
         private FeatureRepository featureRepo;
         private FeatureValueRepository featureValueRepo;
+        private FeaturesForCategoryRepository featureForCategoryRepo;
 
         public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo, ProducentRepository producentRepo,
-                            FeatureRepository featureRepo, FeatureValueRepository featureValueRepo)
+                            FeatureRepository featureRepo, FeatureValueRepository featureValueRepo, FeaturesForCategoryRepository featureForCategoryRepo)
         {
             this.groupRepo = groupRepo;
             this.categoryRepo = categoryRepo;
             this.producentRepo = producentRepo;
             this.featureRepo = featureRepo;
             this.featureValueRepo = featureValueRepo;
+            this.featureForCategoryRepo = featureForCategoryRepo;
         }
 
 
@@ -159,6 +161,41 @@ namespace ComputerShop.Infrastructure.Services
         {
             var localFeatureValue = featureValueRepo.Get(featureValueId);
             featureValueRepo.Delete(localFeatureValue);
+        }
+
+        //Łączenie cech z kategoriami
+        public IEnumerable<Feature> GetAllFeaturesAssignedForCategory(int id)
+        {
+            return featureForCategoryRepo.GetAll().Where(f => f.CategoryId == id).Select(c => c.Feature);
+        }
+
+        public IEnumerable<Feature> GetAllFeaturesNotAssignedForCategory(int id)
+        {
+            var assignedFeaturesId = GetAllFeaturesAssignedForCategory(id).Select(i => i.Id);
+            var allFeaturesId = GetAllFeatures().Select(i => i.Id);
+            var difference = allFeaturesId.Except(assignedFeaturesId);
+            return GetAllFeatures().Where(c => difference.Contains(c.Id));
+        }
+
+        public FeaturesForCategory GetFeatureForCategory(int featureId, int categoryId)
+        {
+            return featureForCategoryRepo.GetAll().Where(f => (f.FeatureId == featureId && f.CategoryId == categoryId)).SingleOrDefault();
+        }
+
+        public void AssignFeaturesToCategory(int categoryId, IEnumerable<int> featuresId)
+        {
+            foreach (var featureId in featuresId)
+            {
+                featureForCategoryRepo.Insert(new FeaturesForCategory() { CategoryId = categoryId, FeatureId = featureId });
+            }
+        }
+
+        public void DeleteAssignFeaturesToCategory(int categoryId, IEnumerable<int> featuresId)
+        {
+            foreach(var featureId in featuresId)
+            {
+                featureForCategoryRepo.Delete(GetFeatureForCategory(featureId, categoryId));
+            }
         }
     }
 }

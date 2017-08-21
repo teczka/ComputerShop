@@ -1,0 +1,40 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.EditFeaturesForCategoriesViewModel
+@{
+    ViewBag.Title = "ConnectFeaturesToCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h3>Przypisanie cech dla kategorii @Model.Category.CategoryName</h3>
+        <div class="col-sm-4">
+           @using (Html.BeginForm("AssignFeaturesToCategory", "Admin"))
+            { 
+                <label for="SelectedFeaturesId">Cechy nie przypisane do kategorii</label>
+                <select multiple class="form-control" id="SelectedFeaturesId" name="SelectedFeaturesId">
+                    @foreach (var item in Model.FeaturesNotAssignedToCategory)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <input class="hidden" name="CategoryId" value="@Model.Category.Id" /><br />
+                <input type="submit" class="btn btn-success" value="Dodaj wybrane cechy" />
+            }    
+        </div>
+        <div class="col-sm-4">
+            @using (Html.BeginForm("UnassignFeaturesFromCategory", "Admin"))
+            {
+                <label for="SelectedFeaturesId">Cechy przypisane do kategorii</label>
+                <select multiple class="form-control" id="SelectedFeaturesId" name="SelectedFeaturesId">
+                    @foreach (var item in Model.FeaturesAssignedToCategory)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+                <input class="hidden" name="CategoryId" value="@Model.Category.Id" /><br />
+                <input type="submit" class="btn btn-danger" value="Usuń wybrane cechy" />
+            }
+        </div>
+    </div>
+</div>
+
