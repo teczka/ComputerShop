@@ -154,12 +154,14 @@
     <Compile Include="Models\AdminViewModels\AddNewFeatureViewModel.cs" />
     <Compile Include="Models\AdminViewModels\AddNewGroupViewModel.cs" />
     <Compile Include="Models\AdminViewModels\AddNewProducentViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\AddNewProductViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditCategoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditFeaturesForCategoriesViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditFeatureValueViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditFeatureViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditGroupViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditProducentViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\EditProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +190,9 @@
     <Content Include="Views\Admin\EditFeature.cshtml" />
     <Content Include="Views\Admin\EditFeatureValue.cshtml" />
     <Content Include="Views\Admin\ConnectFeaturesToCategory.cshtml" />
+    <Content Include="Views\Admin\ProductsPanel.cshtml" />
+    <Content Include="Views\Admin\AddNewProduct.cshtml" />
+    <Content Include="Views\Admin\EditProduct.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

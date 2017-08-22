@@ -16,9 +16,10 @@ namespace ComputerShop.Infrastructure.Services
         private FeatureRepository featureRepo;
         private FeatureValueRepository featureValueRepo;
         private FeaturesForCategoryRepository featureForCategoryRepo;
+        private ProductRepository productRepo;
 
-        public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo, ProducentRepository producentRepo,
-                            FeatureRepository featureRepo, FeatureValueRepository featureValueRepo, FeaturesForCategoryRepository featureForCategoryRepo)
+        public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo, ProducentRepository producentRepo, FeatureRepository featureRepo, 
+                            FeatureValueRepository featureValueRepo, FeaturesForCategoryRepository featureForCategoryRepo, ProductRepository productRepo)
         {
             this.groupRepo = groupRepo;
             this.categoryRepo = categoryRepo;
@@ -26,6 +27,7 @@ namespace ComputerShop.Infrastructure.Services
             this.featureRepo = featureRepo;
             this.featureValueRepo = featureValueRepo;
             this.featureForCategoryRepo = featureForCategoryRepo;
+            this.productRepo = productRepo;
         }
 
 
@@ -196,6 +198,32 @@ namespace ComputerShop.Infrastructure.Services
             {
                 featureForCategoryRepo.Delete(GetFeatureForCategory(featureId, categoryId));
             }
+        }
+
+        //metody dla produktów
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return productRepo.GetAll();
+        }
+
+        public Product GetProductById(int productId)
+        {
+            return productRepo.Get(productId);
+        }
+
+        public void AddNewProduct(Product product)
+        {
+            productRepo.Insert(product);
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            productRepo.Delete(productRepo.Get(productId));
+        }
+
+        public void EditProduct(Product product)
+        {
+            productRepo.Update(product);
         }
     }
 }

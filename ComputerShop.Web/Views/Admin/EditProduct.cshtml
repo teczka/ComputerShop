@@ -1,0 +1,39 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.EditProductViewModel
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h3>Edytuj produkt</h3>
+                <div class="form-group">
+                    <label for="Name">Nazwa</label>
+                    <input name="Name" type="text" class="form-control" value="@Model.Name"/><br />
+                    <label for="Price">Cena</label>
+                    <input name="Price" type="number" min="0.01" max="99999.99" step="0.01" class="form-control" value="@Model.Price"/><br />
+                    <label for="ProducentId">Producent</label>
+                    <select class="form-control" id="ProducentId" name="ProducentId">
+                        @foreach (var item in Model.AllProducents)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select><br />
+                    <label for="CategoryId">Kategoria</label>
+                    <select class="form-control" id="CategoryId" name="CategoryId">
+                        @foreach (var item in Model.AllCategories)
+                        {
+                            <option value="@item.Id">@item.CategoryName</option>
+                        }
+                    </select><br />
+                    <input class="hidden" name="ProductId" value="@Model.ProductId" />
+                    <input type="submit" value="Zapisz" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

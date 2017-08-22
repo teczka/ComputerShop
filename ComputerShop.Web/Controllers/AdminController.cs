@@ -244,5 +244,69 @@ namespace ComputerShop.Web.Controllers
             adminService.DeleteAssignFeaturesToCategory(model.CategoryId, model.SelectedFeaturesId);
             return RedirectToAction("ConnectFeaturesToCategory", new { categoryId = model.CategoryId });
         }
+
+        //Akcje dla produktu
+        public ActionResult ProductsPanel()
+        {
+            var model = adminService.GetAllProducts();
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult AddNewProduct()
+        {
+            return View(new AddNewProductViewModel() { AllCategories = adminService.GetAllCategories(), AllProducents = adminService.GetAllProducents()});
+        }
+
+        [HttpPost]
+        public ActionResult AddNewProduct(AddNewProductViewModel model)
+        {
+            adminService.AddNewProduct(new Product()
+            {
+                Name = model.Name,
+                Price = model.Price,
+                ProducentId = model.ProducentId,
+                CategoryId = model.CategoryId
+            });
+            return RedirectToAction("ProductsPanel", "Admin");
+        }
+
+        public ActionResult DeleteProduct(int productId)
+        {
+            adminService.DeleteProduct(productId);
+            return RedirectToAction("ProductsPanel", "Admin");
+        }
+
+        [HttpGet]
+        public ActionResult EditProduct(int productId)
+        {
+            var localProduct = adminService.GetProductById(productId);
+            var model = new EditProductViewModel()
+            {
+                ProductId = productId,
+                Name = localProduct.Name,
+                Price = localProduct.Price,
+                AllCategories = adminService.GetAllCategories(),
+                AllProducents = adminService.GetAllProducents()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditProduct(EditProductViewModel model)
+        {
+            var editedProduct = adminService.GetProductById(model.ProductId);
+            editedProduct.Name = model.Name;
+            editedProduct.Price = model.Price;
+            editedProduct.ProducentId = model.ProducentId;
+            editedProduct.CategoryId = model.CategoryId;
+            adminService.EditProduct(editedProduct);
+            return RedirectToAction("ProductsPanel", "Admin");
+        }
+
+        public ActionResult AddFeatureValuesToProduct(int productId)
+        {
+
+        }
     }
 }
