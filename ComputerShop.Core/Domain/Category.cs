@@ -14,6 +14,6 @@ namespace ComputerShop.Core.Domain
         public bool IsAssemblyCategory { get; set; }
 
         public virtual Group Group { get; set; }
-        public virtual IEnumerable<FeaturesForCategory> FeatureForCategory { get; set; }
+        public virtual ICollection<FeaturesForCategory> FeatureForCategory { get; set; }
     }
 }

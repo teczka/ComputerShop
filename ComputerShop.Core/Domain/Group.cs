@@ -11,6 +11,6 @@ namespace ComputerShop.Core.Domain
         public int Id { get; set; }
         public string GroupName { get; set; }
 
-        public virtual IEnumerable<Category> Categories { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

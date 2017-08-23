@@ -304,9 +304,27 @@ namespace ComputerShop.Web.Controllers
             return RedirectToAction("ProductsPanel", "Admin");
         }
 
+        [HttpGet]
         public ActionResult AddFeatureValuesToProduct(int productId)
         {
+            var model = new EditFeaturesForProductViewModel()
+            {
+                ProductId = productId,
+                Features = adminService.GetAllFeaturesForProductId(productId)
+            };
+            return View(model);
+        }
 
+        [HttpPost]
+        public ActionResult AddFeatureValuesToProduct(EditFeaturesForProductViewModel model)
+        {
+            adminService.AssignVeatureValueToProduct(model.ProductId, model.SelectedFeatureValueIds);
+            return RedirectToAction("ProductsPanel", "Admin");
+        }
+
+        public ActionResult ShowFeatureValuesForProduct(int productId)
+        {
+            return View(adminService.GetAllFeatureValuesForProductId(productId));
         }
     }
 }

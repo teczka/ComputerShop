@@ -17,9 +17,11 @@ namespace ComputerShop.Infrastructure.Services
         private FeatureValueRepository featureValueRepo;
         private FeaturesForCategoryRepository featureForCategoryRepo;
         private ProductRepository productRepo;
+        private FeatureValueForProductRepository featureValueForProductRepo;
 
         public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo, ProducentRepository producentRepo, FeatureRepository featureRepo, 
-                            FeatureValueRepository featureValueRepo, FeaturesForCategoryRepository featureForCategoryRepo, ProductRepository productRepo)
+                            FeatureValueRepository featureValueRepo, FeaturesForCategoryRepository featureForCategoryRepo, ProductRepository productRepo,
+                            FeatureValueForProductRepository featureValueForProductRepo)
         {
             this.groupRepo = groupRepo;
             this.categoryRepo = categoryRepo;
@@ -28,6 +30,7 @@ namespace ComputerShop.Infrastructure.Services
             this.featureValueRepo = featureValueRepo;
             this.featureForCategoryRepo = featureForCategoryRepo;
             this.productRepo = productRepo;
+            this.featureValueForProductRepo = featureValueForProductRepo;
         }
 
 
@@ -224,6 +227,33 @@ namespace ComputerShop.Infrastructure.Services
         public void EditProduct(Product product)
         {
             productRepo.Update(product);
+        }
+
+        public IEnumerable<Feature> GetAllFeaturesForProductId(int productId)
+        {
+            return productRepo.Get(productId).Category.FeatureForCategory.Select(f => f.Feature);
+        }
+
+        public void AssignVeatureValueToProduct(int productId, IEnumerable<int> featureValueIds)
+        {
+            var featureValues = featureValueForProductRepo.GetAll().Where(f => f.ProductId == productId);
+            if (featureValues != null)
+            {
+                foreach (var item in featureValues)
+                {
+                    featureValueForProductRepo.Remove(item);
+                }
+                featureValueForProductRepo.SaveChanges();
+            }
+            foreach (var item in featureValueIds)
+            {
+                featureValueForProductRepo.Insert(new FeatureValueForProduct() { ProductId = productId, FeatureValueId = item });
+            }
+        }
+
+        public IEnumerable<FeatureValueForProduct> GetAllFeatureValuesForProductId(int productId)
+        {
+            return featureValueForProductRepo.GetAll().Where(p => p.ProductId == productId);
         }
     }
 }

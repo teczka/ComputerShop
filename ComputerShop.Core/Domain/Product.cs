@@ -15,7 +15,7 @@ namespace ComputerShop.Core.Domain
         public int ProducentId { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual IEnumerable<FeatureValueForProduct> FeatureValuesForProduct { get; set; }
+        public virtual ICollection<FeatureValueForProduct> FeatureValuesForProduct { get; set; }
         public virtual Producent Producent { get; set; }
     }
 }

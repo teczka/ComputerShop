@@ -1,0 +1,30 @@
+﻿@model ComputerShop.Web.Models.AdminViewModels.EditFeaturesForProductViewModel
+@{
+    ViewBag.Title = "AddFeatureValuesToProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <h3>Wybierz wartości cech dla produktu</h3>
+                <div class="form-group">
+                    @foreach (var feature in Model.Features)
+                    {
+                        <label for="SelectedFeatureValueIds" name="SelectedFeatureValueIds">@feature.Name</label>
+                        <select class="form-control" name="SelectedFeatureValueIds">
+                            @foreach (var featureValue in feature.FeatureValues)
+                            {
+                                <option value="@featureValue.Id">@featureValue.Name</option>
+                            }
+                        </select>
+                    }
+                    <input type="submit" value="Zapisz" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

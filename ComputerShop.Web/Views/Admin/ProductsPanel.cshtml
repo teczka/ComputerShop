@@ -28,6 +28,7 @@
                             <th>@item.Price</th>
                             <th>
                                 <div class="btn-group">
+                                    @Html.ActionLink("Pokaż cechy", "ShowFeatureValuesForProduct", "Admin", new { productId = item.Id }, new { @class = "btn btn-success" })
                                     @Html.ActionLink("Dodaj cechy", "AddFeatureValuesToProduct", "Admin", new { productId = item.Id }, new { @class = "btn btn-info" })
                                     @Html.ActionLink("Edytuj", "EditProduct", "Admin", new { productId = item.Id }, new { @class = "btn btn-warning" })
                                     @Html.ActionLink("Usuń", "DeleteProduct", "Admin", new { productId = item.Id }, new { @class = "btn btn-danger" })

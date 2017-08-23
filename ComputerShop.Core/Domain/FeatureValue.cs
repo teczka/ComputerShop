@@ -13,6 +13,6 @@ namespace ComputerShop.Core.Domain
         public int FeatureId { get; set; }
 
         public virtual Feature Feature { get; set; }
-        public virtual IEnumerable<FeatureValueForProduct> FeatureValuesForProduct { get; set; }
+        public virtual ICollection<FeatureValueForProduct> FeatureValuesForProduct { get; set; }
     }
 }
