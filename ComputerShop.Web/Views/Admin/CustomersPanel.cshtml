@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ComputerShop.Core.Domain.User>
+@{
+    ViewBag.Title = "CustomersPanel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>Lista klientów</h3>
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>E-mail</th>
+                        <th>Numer telefonu</th>
+                        <th>Opcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.Name</th>
+                            <th>@item.Surname</th>
+                            <th>@item.Email</th>
+                            <th>@item.PhoneNumber</th>
+                            <th>
+                                <div class="btn-group">
+                                    @if (!System.Web.Security.Roles.Provider.IsUserInRole(item.Email, ComputerShop.Core.Enums.ShopRoles.Seller.ToString()))
+                                    {
+                                        @Html.ActionLink("Ustaw jako sprzedawcę", "AddSellerRoleToUser", "Admin", new { userId = item.Id }, new { @class = "btn btn-success" })
+                                    }                                   
+                                </div>
+                            </th>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

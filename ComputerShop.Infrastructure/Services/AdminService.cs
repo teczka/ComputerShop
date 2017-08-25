@@ -1,4 +1,5 @@
 ﻿using ComputerShop.Core.Domain;
+using ComputerShop.Core.Enums;
 using ComputerShop.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,11 @@ namespace ComputerShop.Infrastructure.Services
         private FeaturesForCategoryRepository featureForCategoryRepo;
         private ProductRepository productRepo;
         private FeatureValueForProductRepository featureValueForProductRepo;
+        private UserRepository userRepo;
 
         public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo, ProducentRepository producentRepo, FeatureRepository featureRepo, 
                             FeatureValueRepository featureValueRepo, FeaturesForCategoryRepository featureForCategoryRepo, ProductRepository productRepo,
-                            FeatureValueForProductRepository featureValueForProductRepo)
+                            FeatureValueForProductRepository featureValueForProductRepo, UserRepository userRepo)
         {
             this.groupRepo = groupRepo;
             this.categoryRepo = categoryRepo;
@@ -31,6 +33,7 @@ namespace ComputerShop.Infrastructure.Services
             this.featureForCategoryRepo = featureForCategoryRepo;
             this.productRepo = productRepo;
             this.featureValueForProductRepo = featureValueForProductRepo;
+            this.userRepo = userRepo;
         }
 
 
@@ -254,6 +257,36 @@ namespace ComputerShop.Infrastructure.Services
         public IEnumerable<FeatureValueForProduct> GetAllFeatureValuesForProductId(int productId)
         {
             return featureValueForProductRepo.GetAll().Where(p => p.ProductId == productId);
+        }
+
+        //Metody dla klientów
+        public IEnumerable<User> GetAllCustomers()
+        {
+            var roleProvider = System.Web.Security.Roles.Provider;
+            var usersInRole = roleProvider.GetUsersInRole(ShopRoles.Customer.ToString());
+            return userRepo.GetAll().Where(u => usersInRole.Contains(u.Email)).ToList();
+        }
+
+        public void AssignSellerRoleToUserById(int userId)
+        {
+            var roleProvider = System.Web.Security.Roles.Provider;
+            User user = userRepo.Get(userId);
+            roleProvider.AddUsersToRoles(new[] { user.Email }, new[] { ShopRoles.Seller.ToString() });
+        }
+
+        //Metody dla sprzedawców
+        public IEnumerable<User> GetAllSellers()
+        {
+            var roleProvider = System.Web.Security.Roles.Provider;
+            var usersInRole = roleProvider.GetUsersInRole(ShopRoles.Seller.ToString());
+            return userRepo.GetAll().Where(u => usersInRole.Contains(u.Email)).ToList();
+        }
+
+        public void RemoveSellerRoleFromUser(int userId)
+        {
+            var roleProvider = System.Web.Security.Roles.Provider;
+            User user = userRepo.Get(userId);
+            roleProvider.RemoveUsersFromRoles(new[] { user.Email }, new[] { ShopRoles.Seller.ToString() });
         }
     }
 }

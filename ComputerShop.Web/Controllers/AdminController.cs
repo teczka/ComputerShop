@@ -326,5 +326,31 @@ namespace ComputerShop.Web.Controllers
         {
             return View(adminService.GetAllFeatureValuesForProductId(productId));
         }
+
+        //Akcje dla klientów
+        public ActionResult CustomersPanel()
+        {
+            var model = adminService.GetAllCustomers();
+            return View(model);
+        }
+
+        public ActionResult AddSellerRoleToUser(int userId)
+        {
+            adminService.AssignSellerRoleToUserById(userId);
+            return RedirectToAction("CustomersPanel", "Admin");
+        }
+
+        //Akcje dla sprzedawców
+        public ActionResult SellersPanel()
+        {
+            var model = adminService.GetAllSellers();
+            return View(model);
+        }
+
+        public ActionResult RemoveSellerRoleFromUser(int userId)
+        {
+            adminService.RemoveSellerRoleFromUser(userId);
+            return RedirectToAction("SellersPanel", "Admin");
+        }
     }
 }

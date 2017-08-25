@@ -29,7 +29,7 @@ namespace ComputerShop.Web.Controllers
         {
             accountService.RegisterUser(new Core.Domain.User() { Email = model.Email, Name = model.Name, Surname = model.Surname, PhoneNumber = model.PhoneNumber }, model.Password);
             accountService.AssignToRole(model.Email, Core.Enums.ShopRoles.Customer);
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]

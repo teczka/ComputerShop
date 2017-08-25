@@ -9,6 +9,7 @@ namespace ComputerShop.Core.Enums
     public enum ShopRoles
     {
         Admin,
-        Customer
+        Customer,
+        Seller
     }
 }
