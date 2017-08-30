@@ -29,7 +29,7 @@ namespace ComputerShop.Web.Controllers
         {
             accountService.RegisterUser(new Core.Domain.User() { Email = model.Email, Name = model.Name, Surname = model.Surname, PhoneNumber = model.PhoneNumber }, model.Password);
             accountService.AssignToRole(model.Email, Core.Enums.ShopRoles.Customer);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ProductsList", "Products");
         }
 
         [HttpGet]
@@ -42,13 +42,13 @@ namespace ComputerShop.Web.Controllers
         public ActionResult Login(UserLoginViewModel model)
         {
             accountService.LoginUser(model.Email, model.Password);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ProductsList", "Products");
         }
 
         public ActionResult Logout()
         {
             accountService.LogoutUser();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ProductsList", "Products");
         }
     }
 }

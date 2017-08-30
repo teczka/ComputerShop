@@ -41,12 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Basket.cs" />
+    <Compile Include="Domain\BasketItem.cs" />
     <Compile Include="Domain\Category.cs" />
     <Compile Include="Domain\Feature.cs" />
     <Compile Include="Domain\FeaturesForCategory.cs" />
     <Compile Include="Domain\FeatureValue.cs" />
     <Compile Include="Domain\FeatureValueForProduct.cs" />
     <Compile Include="Domain\Group.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\PageInfo.cs" />
     <Compile Include="Domain\Producent.cs" />
     <Compile Include="Domain\Product.cs" />
     <Compile Include="Domain\User.cs" />

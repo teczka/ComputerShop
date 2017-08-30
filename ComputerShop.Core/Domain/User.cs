@@ -1,4 +1,7 @@
-﻿namespace ComputerShop.Core.Domain
+﻿using System.Collections;
+using System.Collections.Generic;
+
+namespace ComputerShop.Core.Domain
 {
     public class User
     {
@@ -7,5 +10,7 @@
         public string Name { get; set; }
         public string Surname { get; set; }
         public int PhoneNumber { get; set; }
+
+        public virtual ICollection<Basket> Baskets { get; set; }
     }
 }

@@ -16,5 +16,8 @@ namespace ComputerShop.Infrastructure
         public DbSet<FeatureValueForProduct> FeatureValueForProducts { get; set; }
         public DbSet<Producent> Producents { get; set; }
         public DbSet<FeaturesForCategory> FeaturesForCategories { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
     }
 }

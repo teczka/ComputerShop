@@ -79,8 +79,26 @@
     <Compile Include="Migrations\201708221122503_2208.Designer.cs">
       <DependentUpon>201708221122503_2208.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708271207122_2708.cs" />
+    <Compile Include="Migrations\201708271207122_2708.Designer.cs">
+      <DependentUpon>201708271207122_2708.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291942029_2908.cs" />
+    <Compile Include="Migrations\201708291942029_2908.Designer.cs">
+      <DependentUpon>201708291942029_2908.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708291955507_29081.cs" />
+    <Compile Include="Migrations\201708291955507_29081.Designer.cs">
+      <DependentUpon>201708291955507_29081.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708292048595_29082.cs" />
+    <Compile Include="Migrations\201708292048595_29082.Designer.cs">
+      <DependentUpon>201708292048595_29082.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BasketItemRepository.cs" />
+    <Compile Include="Repositories\BasketRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\FeatureRepository.cs" />
     <Compile Include="Repositories\FeaturesForCategoryRepository.cs" />
@@ -92,6 +110,7 @@
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\ShopService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -109,6 +128,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708221122503_2208.resx">
       <DependentUpon>201708221122503_2208.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271207122_2708.resx">
+      <DependentUpon>201708271207122_2708.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291942029_2908.resx">
+      <DependentUpon>201708291942029_2908.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708291955507_29081.resx">
+      <DependentUpon>201708291955507_29081.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708292048595_29082.resx">
+      <DependentUpon>201708292048595_29082.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

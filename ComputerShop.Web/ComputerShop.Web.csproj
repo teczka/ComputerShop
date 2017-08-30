@@ -144,6 +144,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,6 +164,7 @@
     <Compile Include="Models\AdminViewModels\EditGroupViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditProducentViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditProductViewModel.cs" />
+    <Compile Include="Models\ShopViewModels\ProductsListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +200,7 @@
     <Content Include="Views\Admin\ShowFeatureValuesForProduct.cshtml" />
     <Content Include="Views\Admin\CustomersPanel.cshtml" />
     <Content Include="Views\Admin\SellersPanel.cshtml" />
+    <Content Include="Views\Products\ProductsList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
