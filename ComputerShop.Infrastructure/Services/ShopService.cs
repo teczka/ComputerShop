@@ -15,14 +15,19 @@ namespace ComputerShop.Infrastructure.Services
         private BasketRepository basketRepo;
         private UserRepository userRepo;
         private BasketItemRepository basketItemRepo;
+        private OrderRepository orderRepo;
+        private AddressRepository addressRepo;
 
-        public ShopService(ProductRepository productRepo, CategoryRepository categoryRepo, BasketRepository basketRepo, UserRepository userRepo, BasketItemRepository basketItemRepo)
+        public ShopService(ProductRepository productRepo, CategoryRepository categoryRepo, BasketRepository basketRepo, UserRepository userRepo,
+                           BasketItemRepository basketItemRepo, OrderRepository orderRepo, AddressRepository addressRepo)
         {
             this.productRepo = productRepo;
             this.categoryRepo = categoryRepo;
             this.basketRepo = basketRepo;
             this.userRepo = userRepo;
             this.basketItemRepo = basketItemRepo;
+            this.orderRepo = orderRepo;
+            this.addressRepo = addressRepo;
         }
 
         public IEnumerable<Product> GetProducts(PageInfo pageInfo, int groupId = 0, int categoryId = 0)
@@ -120,6 +125,25 @@ namespace ComputerShop.Infrastructure.Services
             var basket = basketRepo.Get(basketId);
             var itemToRemove = basketItemRepo.GetAll().Where(b => (b.Basket.Id == basketId && b.ProductId == productId)).FirstOrDefault();
             basketItemRepo.Delete(itemToRemove);
+        }
+
+        public Basket GetBasketById(int basketId)
+        {
+            return basketRepo.Get(basketId);
+        }
+
+        public void CreateOrder(int basketId, Address address)
+        {
+            var basket = GetBasketById(basketId);
+            orderRepo.Insert(new Order()
+            {
+                Address = new Address() { City = address.City, Line = address.Line, PostCode = address.PostCode },
+                Basket = basket,
+                OrderDate = DateTime.Now,
+                BasketId = basket.Id
+            });
+            basket.IsClosed = true;
+            basketRepo.SaveChanges();
         }
     }
 }

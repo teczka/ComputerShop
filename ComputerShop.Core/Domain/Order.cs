@@ -14,7 +14,9 @@ namespace ComputerShop.Core.Domain
         public int Id { get; set; }
         public int BasketId { get; set; }
         public DateTime OrderDate { get; set; }
+        public int AddressId { get; set; }
 
         public virtual Basket Basket { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

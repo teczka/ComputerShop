@@ -1,4 +1,5 @@
-﻿using ComputerShop.Infrastructure.Services;
+﻿using ComputerShop.Core.Domain;
+using ComputerShop.Infrastructure.Services;
 using ComputerShop.Web.Models.ShopViewModels;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,19 @@ namespace ComputerShop.Web.Controllers
         {
             shopService.RemoveItemFromBasket(basketId, productId);
             return RedirectToAction(nameof(ProductsList));
+        }
+
+        [HttpGet]
+        public ActionResult MakeAnOrder(int basketId)
+        {
+            return View(new MakeOrderViewModel() { Basket = shopService.GetBasketById(basketId), BasketId = basketId });
+        }
+
+        [HttpPost]
+        public ActionResult MakeAnOrder(MakeOrderViewModel model)
+        {
+            shopService.CreateOrder(model.BasketId, model.Address);
+            return null;
         }
     }
 }

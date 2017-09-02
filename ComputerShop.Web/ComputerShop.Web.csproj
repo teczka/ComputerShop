@@ -164,6 +164,7 @@
     <Compile Include="Models\AdminViewModels\EditGroupViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditProducentViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditProductViewModel.cs" />
+    <Compile Include="Models\ShopViewModels\MakeOrderViewModel.cs" />
     <Compile Include="Models\ShopViewModels\ProductsListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -201,6 +202,7 @@
     <Content Include="Views\Admin\CustomersPanel.cshtml" />
     <Content Include="Views\Admin\SellersPanel.cshtml" />
     <Content Include="Views\Products\ProductsList.cshtml" />
+    <Content Include="Views\Products\MakeAnOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

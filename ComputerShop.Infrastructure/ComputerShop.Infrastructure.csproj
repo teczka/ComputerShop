@@ -75,28 +75,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComputerShopContext.cs" />
-    <Compile Include="Migrations\201708221122503_2208.cs" />
-    <Compile Include="Migrations\201708221122503_2208.Designer.cs">
-      <DependentUpon>201708221122503_2208.cs</DependentUpon>
+    <Compile Include="Migrations\201708302049597_3008.cs" />
+    <Compile Include="Migrations\201708302049597_3008.Designer.cs">
+      <DependentUpon>201708302049597_3008.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708271207122_2708.cs" />
-    <Compile Include="Migrations\201708271207122_2708.Designer.cs">
-      <DependentUpon>201708271207122_2708.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708291942029_2908.cs" />
-    <Compile Include="Migrations\201708291942029_2908.Designer.cs">
-      <DependentUpon>201708291942029_2908.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708291955507_29081.cs" />
-    <Compile Include="Migrations\201708291955507_29081.Designer.cs">
-      <DependentUpon>201708291955507_29081.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708292048595_29082.cs" />
-    <Compile Include="Migrations\201708292048595_29082.Designer.cs">
-      <DependentUpon>201708292048595_29082.cs</DependentUpon>
+    <Compile Include="Migrations\201709021036247_0209.cs" />
+    <Compile Include="Migrations\201709021036247_0209.Designer.cs">
+      <DependentUpon>201709021036247_0209.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AddressRepository.cs" />
     <Compile Include="Repositories\BasketItemRepository.cs" />
     <Compile Include="Repositories\BasketRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
@@ -105,6 +94,7 @@
     <Compile Include="Repositories\FeatureValueForProductRepository.cs" />
     <Compile Include="Repositories\FeatureValueRepository.cs" />
     <Compile Include="Repositories\GroupRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\ProducentRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -126,20 +116,11 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708221122503_2208.resx">
-      <DependentUpon>201708221122503_2208.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708302049597_3008.resx">
+      <DependentUpon>201708302049597_3008.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708271207122_2708.resx">
-      <DependentUpon>201708271207122_2708.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708291942029_2908.resx">
-      <DependentUpon>201708291942029_2908.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708291955507_29081.resx">
-      <DependentUpon>201708291955507_29081.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708292048595_29082.resx">
-      <DependentUpon>201708292048595_29082.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201709021036247_0209.resx">
+      <DependentUpon>201709021036247_0209.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

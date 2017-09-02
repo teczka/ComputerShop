@@ -12,6 +12,7 @@ namespace ComputerShop.Core.Domain
         public string CategoryName { get; set; }
         public int GroupId { get; set; }
         public bool IsAssemblyCategory { get; set; }
+        public bool IsRequiredToAssembly { get; set; }
 
         public virtual Group Group { get; set; }
         public virtual ICollection<FeaturesForCategory> FeatureForCategory { get; set; }

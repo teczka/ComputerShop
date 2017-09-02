@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Address.cs" />
     <Compile Include="Domain\Basket.cs" />
     <Compile Include="Domain\BasketItem.cs" />
     <Compile Include="Domain\Category.cs" />

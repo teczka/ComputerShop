@@ -10,6 +10,7 @@ namespace ComputerShop.Core.Domain
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsAssemblyFeature { get; set; }
 
         public virtual ICollection<FeatureValue> FeatureValues { get; set; }
         public virtual ICollection<FeaturesForCategory> FeaturesForCategory { get; set; }
