@@ -138,9 +138,9 @@ namespace ComputerShop.Infrastructure.Services
             orderRepo.Insert(new Order()
             {
                 Address = new Address() { City = address.City, Line = address.Line, PostCode = address.PostCode },
-                Basket = basket,
                 OrderDate = DateTime.Now,
-                BasketId = basket.Id
+                BasketId = basket.Id,
+                Basket = basket
             });
             basket.IsClosed = true;
             basketRepo.SaveChanges();

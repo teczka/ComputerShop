@@ -8,5 +8,6 @@ namespace ComputerShop.Web.Models.AdminViewModels
     public class AddNewFeatureViewModel
     {
         public string FeatureName { get; set; }
+        public bool IsAssembly { get; set; }
     }
 }

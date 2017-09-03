@@ -162,7 +162,7 @@ namespace ComputerShop.Web.Controllers
         [HttpPost]
         public ActionResult AddNewFeature(AddNewFeatureViewModel model)
         {
-            adminService.AddNewFeature(new Feature() { Name = model.FeatureName });
+            adminService.AddNewFeature(new Feature() { Name = model.FeatureName, IsAssemblyFeature = model.IsAssembly });
             return RedirectToAction(nameof(FeaturesPanel));
         }
 
@@ -173,14 +173,15 @@ namespace ComputerShop.Web.Controllers
             {
                 FeatureId = featureId,
                 FeatureName = adminService.GetFeatureById(featureId).Name,
-                FeatureValues = adminService.GetFeatureValuesForFeatureId(featureId)
+                FeatureValues = adminService.GetFeatureValuesForFeatureId(featureId),
+                IsAssembly = adminService.GetFeatureById(featureId).IsAssemblyFeature
             });
         }
 
         [HttpPost]
         public ActionResult EditFeature(EditFeatureViewModel model)
         {
-            adminService.EditFeature(new Feature() { Name = model.FeatureName, Id = model.FeatureId });
+            adminService.EditFeature(new Feature() { Name = model.FeatureName, Id = model.FeatureId, IsAssemblyFeature = model.IsAssembly });
             return RedirectToAction(nameof(FeaturesPanel));
         }
 

@@ -11,6 +11,7 @@ namespace ComputerShop.Web.Models.AdminViewModels
         public int FeatureId { get; set; }
         public string FeatureName { get; set; }
         public string FeatureValueName { get; set; }
+        public bool IsAssembly { get; set; }
         public IEnumerable<FeatureValue> FeatureValues { get; set; }
     }
 }

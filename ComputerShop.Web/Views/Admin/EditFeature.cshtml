@@ -40,6 +40,8 @@
                         <br />
                         <label for="login">Podaj nową nazwę cechy</label><br />
                         <input name="featureName" type="text" class="form-control" value="@Model.FeatureName" />
+                        <label for="IsAssembly">Czy cecha ważna dla montażu?</label>
+                        @Html.CheckBoxFor(m => m.IsAssembly)
                         <input class="hidden" name="FeatureId" value="@Model.FeatureId" /><br />
                         <input type="submit" value="Zapisz" class="btn btn-primary" />
                     </div>

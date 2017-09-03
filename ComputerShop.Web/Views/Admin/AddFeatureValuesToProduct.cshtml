@@ -14,7 +14,7 @@
                     @foreach (var feature in Model.Features)
                     {
                         <label for="SelectedFeatureValueIds" name="SelectedFeatureValueIds">@feature.Name</label>
-                        <select class="form-control" name="SelectedFeatureValueIds">
+                        <select multiple class="form-control" name="SelectedFeatureValueIds">
                             @foreach (var featureValue in feature.FeatureValues)
                             {
                                 <option value="@featureValue.Id">@featureValue.Name</option>
