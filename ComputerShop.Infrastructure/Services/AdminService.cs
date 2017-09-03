@@ -21,19 +21,17 @@ namespace ComputerShop.Infrastructure.Services
         private FeatureValueForProductRepository featureValueForProductRepo;
         private UserRepository userRepo;
 
-        public AdminService(GroupRepository groupRepo, CategoryRepository categoryRepo, ProducentRepository producentRepo, FeatureRepository featureRepo, 
-                            FeatureValueRepository featureValueRepo, FeaturesForCategoryRepository featureForCategoryRepo, ProductRepository productRepo,
-                            FeatureValueForProductRepository featureValueForProductRepo, UserRepository userRepo)
+        public AdminService(ComputerShopContext context)
         {
-            this.groupRepo = groupRepo;
-            this.categoryRepo = categoryRepo;
-            this.producentRepo = producentRepo;
-            this.featureRepo = featureRepo;
-            this.featureValueRepo = featureValueRepo;
-            this.featureForCategoryRepo = featureForCategoryRepo;
-            this.productRepo = productRepo;
-            this.featureValueForProductRepo = featureValueForProductRepo;
-            this.userRepo = userRepo;
+            groupRepo = new GroupRepository(context);
+            categoryRepo = new CategoryRepository(context);
+            producentRepo = new ProducentRepository(context);
+            featureRepo = new FeatureRepository(context);
+            featureValueRepo = new FeatureValueRepository(context);
+            featureForCategoryRepo = new FeaturesForCategoryRepository(context);
+            productRepo = new ProductRepository(context);
+            featureValueRepo = new FeatureValueRepository(context);
+            userRepo = new UserRepository(context);
         }
 
 

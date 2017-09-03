@@ -41,7 +41,7 @@
                 }
             </div>
         </div>
-        @if (WebSecurity.IsAuthenticated && Model.Basket != null)
+        @if (WebSecurity.IsAuthenticated && Model.Basket != null && Model.Basket.IsClosed == false)
         {
             <div class="col-sm-4">
                 <h3>Twój koszyk</h3>

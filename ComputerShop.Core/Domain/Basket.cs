@@ -11,7 +11,6 @@ namespace ComputerShop.Core.Domain
         public int Id { get; set; }
         public int UserId { get; set; }    
         public bool IsClosed { get; set; }
-        public int? OrderId { get; set; }
 
         public virtual ICollection<BasketItem> BasketItems { get; set; }
         public virtual User User { get; set; }

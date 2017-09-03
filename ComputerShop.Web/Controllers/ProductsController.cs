@@ -1,4 +1,5 @@
 ﻿using ComputerShop.Core.Domain;
+using ComputerShop.Infrastructure;
 using ComputerShop.Infrastructure.Services;
 using ComputerShop.Web.Models.ShopViewModels;
 using System;
@@ -15,10 +16,10 @@ namespace ComputerShop.Web.Controllers
         private ShopService shopService;
         private AdminService adminService;
 
-        public ProductsController(ShopService shopService, AdminService adminService)
+        public ProductsController(ShopService shopService, AdminService adminService, ComputerShopContext context)
         {
-            this.shopService = shopService;
-            this.adminService = adminService;
+            this.shopService = new ShopService(context);
+            this.adminService = new AdminService(context);
         }
 
         // GET: Products

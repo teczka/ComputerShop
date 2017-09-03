@@ -18,16 +18,15 @@ namespace ComputerShop.Infrastructure.Services
         private OrderRepository orderRepo;
         private AddressRepository addressRepo;
 
-        public ShopService(ProductRepository productRepo, CategoryRepository categoryRepo, BasketRepository basketRepo, UserRepository userRepo,
-                           BasketItemRepository basketItemRepo, OrderRepository orderRepo, AddressRepository addressRepo)
+        public ShopService(ComputerShopContext context)
         {
-            this.productRepo = productRepo;
-            this.categoryRepo = categoryRepo;
-            this.basketRepo = basketRepo;
-            this.userRepo = userRepo;
-            this.basketItemRepo = basketItemRepo;
-            this.orderRepo = orderRepo;
-            this.addressRepo = addressRepo;
+            productRepo = new ProductRepository(context);
+            categoryRepo = new CategoryRepository(context);
+            basketRepo = new BasketRepository(context);
+            userRepo = new UserRepository(context);
+            basketItemRepo = new BasketItemRepository(context);
+            orderRepo = new OrderRepository(context);
+            addressRepo = new AddressRepository(context);
         }
 
         public IEnumerable<Product> GetProducts(PageInfo pageInfo, int groupId = 0, int categoryId = 0)
@@ -117,7 +116,7 @@ namespace ComputerShop.Infrastructure.Services
 
         public Basket GetOpenBasketForUserId(int userId)
         {
-            return basketRepo.GetAll().Where(b => b.UserId == userId).FirstOrDefault();
+            return basketRepo.GetAll().Where(b => (b.UserId == userId && b.IsClosed == false)).FirstOrDefault();
         }
 
         public void RemoveItemFromBasket(int basketId, int productId)
