@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace ComputerShop.Web.Controllers
 {
+    [Authorize]
     public class AssemblyController : Controller
     {
         public AssemblyController()
@@ -14,7 +15,7 @@ namespace ComputerShop.Web.Controllers
         }
 
         // GET: Assembly
-        public ActionResult Index()
+        public ActionResult AssemblyMenu()
         {
             return View();
         }

@@ -7,6 +7,8 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
+            <h3>Konfigurator</h3>
+            <a href="@Url.Action("AssemblyMenu", "Assembly")" class="btn btn-default">Menu konfiguracji</a>
             <h3>Kategorie</h3>
             <div class="panel-group">
                 @foreach (var group in Model.AllGroups)
@@ -20,8 +22,7 @@
                     </div>
                     
                 }
-            </div>
-            <h3>Konfigurator</h3>
+            </div>           
         </div>
         <div class="col-sm-6">
             <h3>Produkty</h3>

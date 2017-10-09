@@ -204,6 +204,7 @@
     <Content Include="Views\Admin\SellersPanel.cshtml" />
     <Content Include="Views\Products\ProductsList.cshtml" />
     <Content Include="Views\Products\MakeAnOrder.cshtml" />
+    <Content Include="Views\Assembly\AssemblyMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,7 +214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Assembly\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ComputerShop.Core\ComputerShop.Core.csproj">

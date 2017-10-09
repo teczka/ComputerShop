@@ -20,5 +20,6 @@ namespace ComputerShop.Infrastructure
         public DbSet<Order> Orders { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Assembly> Assemblies { get; set; }
     }
 }

@@ -12,5 +12,7 @@ namespace ComputerShop.Core.Domain
         public int PhoneNumber { get; set; }
 
         public virtual ICollection<Basket> Baskets { get; set; }
+        public virtual ICollection<Assembly> Assemblies { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
