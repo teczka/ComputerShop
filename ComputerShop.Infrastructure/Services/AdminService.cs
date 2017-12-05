@@ -32,6 +32,7 @@ namespace ComputerShop.Infrastructure.Services
             productRepo = new ProductRepository(context);
             featureValueRepo = new FeatureValueRepository(context);
             userRepo = new UserRepository(context);
+            featureValueForProductRepo = new FeatureValueForProductRepository(context);
         }
 
 

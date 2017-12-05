@@ -13,7 +13,9 @@ namespace ComputerShop.Core.Domain
         public string Content { get; set; }
         public AssemblyGrade AssemblyGrade { get; set; }
         public int UserId { get; set; }
+        public int? AssemblyId { get; set; }
 
         public virtual User User { get; set; }
+        public virtual Assembly Assembly { get; set; }
     }
 }
