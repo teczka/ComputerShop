@@ -9,32 +9,46 @@
         <div class="col-sm-3">
             <br />
             <div class="btn-group-vertical">
-                <a href="#" class="btn btn-default">Zapisz konfigurację</a>
-                <a href="#" class="btn btn-default">Pokaż zapisane konfiguracje</a>
-                <a href="#" class="btn btn-default">Pokaż konfiguracje innych użytkowników</a>
-            </div>
+                <a href="@Url.Action("FinishCurrentAssembly", "Assembly", new { userId = WebSecurity.CurrentUserId })" class="btn btn-default">Zapisz konfigurację</a>
+            </div>  
+            Wybierz przeznaczenie dla zestawu:
+            @using (Html.BeginForm("SetAssemblyRole", "Assembly"))
+            {
+                @Html.DropDownList("AssemblyRole", new SelectList(Enum.GetValues(typeof(ComputerShop.Core.Enums.AssemblyRole))))
+                <input type="hidden" value="@Model.CurrentAssembly.Id" id="assemblyId" name="assemblyId" />
+                <input type="submit" value="Potwierdź" class="btn btn-default" />
+            }
         </div>
+        
         <div class="col-sm-6">
             <h4>Wybierz element zestawu</h4>
             <p><b>Elementy wymagane</b></p>
-            @foreach (var item in Model.Categories)
-            {
-                if (item.IsRequiredToAssembly == true)
-                {
-                    <a href="@Url.Action("MatchProductToAssembly", "Assembly", new { userId = WebSecurity.CurrentUserId, categoryId = item.Id })" class="btn btn-default">@item.CategoryName</a>
-                    <div class="panel panel-primary">@Model.CurrentAssembly.Products.Where(p=>p.Category.CategoryName == item.CategoryName).Select(p=>p.Name)</div>
-                }
-            }
+            <div class="panel-group">
+                 @foreach (var item in Model.Categories)
+                 {
+                     if (item.IsRequiredToAssembly == true)
+                     {
+                         <div class="panel panel-primary">
+                             <div class="panel-heading"><a href="@Url.Action("MatchProductToAssembly", "Assembly", new { userId = WebSecurity.CurrentUserId, categoryId = item.Id })" class="btn btn-default">@item.CategoryName</a></div>
+                             <div class="panel-body">@Model.CurrentAssembly.Products.Where(p => p.CategoryId == item.Id).Select(p => p.Name).FirstOrDefault()</div>
+                         </div>
+                     }
+                 }    
+            </div>
+            
             <p><b>Elementy opcjonalne</b></p>
-            @foreach (var item in Model.Categories)
-            {
-                if (item.IsRequiredToAssembly == false)
+            <div class="panel-group">
+                @foreach (var item in Model.Categories)
                 {
-                    <a href="#" class="btn btn-default">@item.CategoryName</a>
-                    <div class="panel panel-primary">Tu będą wybrane produkty</div>
-                    <br />
+                    if (item.IsRequiredToAssembly == false)
+                    {
+                        <div class="panel panel-success">
+                            <div class="panel-heading"><a href="@Url.Action("MatchProductToAssembly", "Assembly", new { userId = WebSecurity.CurrentUserId, categoryId = item.Id })" class="btn btn-default">@item.CategoryName</a></div>
+                            <div class="panel-body">@Model.CurrentAssembly.Products.Where(p => p.CategoryId == item.Id).Select(p => p.Name).FirstOrDefault()</div>
+                        </div>
+                    }
                 }
-            }
+            </div>
         </div>
     </div>
 </div>

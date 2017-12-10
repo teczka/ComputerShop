@@ -11,13 +11,14 @@
             <div class="btn-group-vertical">
                 <a href="@Url.Action("CreateNewAssembly", "Assembly", new { userId = WebSecurity.CurrentUserId })" class="btn btn-default">Utwórz nową konfigurację</a>
                 <a href="#" class="btn btn-default">Pokaż zapisane konfiguracje</a>
-                <a href="#" class="btn btn-default">Pokaż konfiguracje innych użytkowników</a>
             </div>
         </div>
         <div class="col-sm-6">
+            <br />
             @foreach (var product in Model.Products)
             {
                 <a href="@Url.Action("MatchProductToAssemblyWithModel", new ComputerShop.Web.Models.AssemblyViewModels.SelectProductToAssemblyViewModel() { SelectedProductId = product.Id, CurrentAssemblyId = Model.CurrentAssemblyId, UserId = WebSecurity.CurrentUserId })" class="btn btn-primary">@product.Producent.Name @product.Name</a>
+                <br />
             }
         </div>
     </div>

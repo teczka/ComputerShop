@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "AddCommentAndMark";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Komentarze do zestawu</h3>
+<div class="panel-group">
+    <div class="panel panel-success">
+        <div class="panel-heading">Biurowy<span class="pull-right">Ocena klientów <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></span></div>
+        <div class="panel-body">Intel i3-7100 3.90GHz<br />MSI B250M PRO-VDH<br />Crucial 8 GB Ballistix Sport<br />be quiet! 500W System Power 8<br />be quiet! Pure Base 600<br />Kingston 120GB SSD<span class="pull-right">Autor: Adam Kowalski</span></div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">05.06.2017 14:43<span class="pull-right"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span></span></div>
+        <div class="panel-body">Ciekawy zestaw<span class="pull-right">Autor: Marek Marecki</span></div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">10.06.2017 20:05<span class="pull-right"><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span></span></div>
+        <div class="panel-body">Część komponentów bym wymienił<span class="pull-right">Autor: Dawid Nowak</span></div>
+    </div>
+</div>
+<h4>Dodaj swój komentarz i ocenę</h4>
+<form class="form-inline">
+    <div class="form-group">
+        <label for="tresc">Treść komentarza</label>
+        <input type="text"  class="form-control"/>
+        <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span>
+        <button class="btn btn-default">Wyślij</button>
+    </div>
+</form>
+

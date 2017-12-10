@@ -149,6 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\AccountViewModels\UserLoginViewModel.cs" />
     <Compile Include="Models\AccountViewModels\UserRegisterViewModel.cs" />
@@ -165,6 +166,8 @@
     <Compile Include="Models\AdminViewModels\EditGroupViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditProducentViewModel.cs" />
     <Compile Include="Models\AdminViewModels\EditProductViewModel.cs" />
+    <Compile Include="Models\AssemblyViewModels\AddCommentViewModel.cs" />
+    <Compile Include="Models\AssemblyViewModels\AssembliesViewModel.cs" />
     <Compile Include="Models\AssemblyViewModels\CreateNewAssemblyViewModel.cs" />
     <Compile Include="Models\AssemblyViewModels\SelectProductToAssemblyViewModel.cs" />
     <Compile Include="Models\ShopViewModels\MakeOrderViewModel.cs" />
@@ -209,6 +212,8 @@
     <Content Include="Views\Assembly\AssemblyMenu.cshtml" />
     <Content Include="Views\Assembly\CreateNewAssembly.cshtml" />
     <Content Include="Views\Assembly\MatchProductToAssembly.cshtml" />
+    <Content Include="Views\Assembly\AddCommentAndMark.cshtml" />
+    <Content Include="Views\Assembly\AddComment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -11,5 +11,6 @@ namespace ComputerShop.Web.Models.ShopViewModels
         public Basket Basket { get; set; }
         public Address Address { get; set; }
         public int BasketId { get; set; }
+        public decimal Sum { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace ComputerShop.Web.Controllers
 {
@@ -21,7 +22,11 @@ namespace ComputerShop.Web.Controllers
         // GET: Assembly
         public ActionResult AssemblyMenu()
         {
-            return View();
+            var model = new AssembliesViewModel()
+            {
+                Assemblies = assemblyService.GetListOfFinishedAssemblies()
+            };
+            return View(model);
         }
 
         public ActionResult CreateNewAssembly(int userId)
@@ -49,6 +54,37 @@ namespace ComputerShop.Web.Controllers
         {
             assemblyService.AddProductToAssembly(model.SelectedProductId, model.CurrentAssemblyId);
             return RedirectToAction(nameof(CreateNewAssembly), new { model.UserId });
+        }
+
+        public ActionResult FinishCurrentAssembly(int userId)
+        {
+            assemblyService.FinishCurrentAssembly(userId);
+            return RedirectToAction(nameof(AssemblyMenu));
+        }
+
+        public ActionResult SetAssemblyRole(string AssemblyRole, string assemblyId)
+        {
+            assemblyService.SetAssemblyRole(AssemblyRole, assemblyId);
+            return RedirectToAction(nameof(AssemblyMenu));
+        }
+
+        [HttpGet]
+        public ActionResult AddComment(int assemblyId, int userId)
+        {
+            var model = new AddCommentViewModel()
+            {
+                AssemblyId = assemblyId,
+                UserId = userId,
+                CommentedAssembly = assemblyService.GetAsseblyById(assemblyId)
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(AddCommentViewModel model)
+        {
+            assemblyService.AddComment(model.AssemblyId, model.CurrentUserId, model.Text, model.Grade);
+            return RedirectToAction(nameof(AssemblyMenu));
         }
     }
 }

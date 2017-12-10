@@ -1,0 +1,38 @@
+﻿@model ComputerShop.Web.Models.AssemblyViewModels.AddCommentViewModel
+@{
+    ViewBag.Title = "AddComment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Oceny i komentarze do zestawu</h3>
+<div class="panel-group">
+    <div class="panel panel-success">
+        <div class="panel-heading">@Model.CommentedAssembly.AssemblyRole.ToString()<span class="pull-right">Ocena klientów @Html.Stars(Html.CountMarks(Model.CommentedAssembly))</span></div>
+        <div class="panel-body">
+            @foreach (var item in Model.CommentedAssembly.Products)
+            {
+                @String.Concat(item.Producent.Name, " ", item.Name) <br />
+            }
+            <br /><span class="pull-right">Autor: @Model.CommentedAssembly.User.Name @Model.CommentedAssembly.User.Surname</span>
+        </div>
+    </div>
+    <br />
+    <p>Komentarze</p>
+    @foreach (var comment in Model.CommentedAssembly.Comments)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">@comment.AddDate<span class="pull-right">Ocena klienta @Html.Stars((int)comment.AssemblyGrade)</span></div>
+            <div class="panel-body">@comment.Content<span class="pull-right">Autor: @comment.User.Name @comment.User.Surname</span></div>
+        </div>
+    }
+</div>
+@using (Html.BeginForm("AddComment", "Assembly", FormMethod.Post))
+{
+    <p>Treść komentarza</p>
+    @Html.TextBoxFor(m=>m.Text)
+    @Html.DropDownListFor(m=>m.Grade, new SelectList(Enum.GetValues(typeof(ComputerShop.Core.Enums.AssemblyGrade))))
+    <input type="hidden" value="@Model.UserId" name="CurrentUserId"/>
+    <input type="hidden" value="@Model.AssemblyId" name="AssemblyId" />
+    <input type="submit" value="Potwierdź ocenę" class="btn btn-default" />
+}
+

@@ -43,7 +43,18 @@ namespace ComputerShop.Infrastructure.Services
             }
             else
             {
-                return null;
+                List<int> allFeatureValuesInAssembly = new List<int>();
+                foreach (var product in currentAssembly.Products)
+                {
+                    allFeatureValuesInAssembly.AddRange(GetFeatureValuesForProduct(product.Id));
+                }
+                var result = productRepo.GetAll().Where(p => p.CategoryId == categoryId && IsAnyFeatureValueEqual(allFeatureValuesInAssembly, p.FeatureValuesForProduct.Select(f => f.FeatureValueId).ToList()) == true);
+                if (result.FirstOrDefault() == null)
+                {
+                    return productRepo.GetAll().Where(p => p.CategoryId == categoryId);
+                }
+                else
+                    return result;
             }
         }
 
@@ -79,7 +90,54 @@ namespace ComputerShop.Infrastructure.Services
 
         private IEnumerable<int> GetFeatureValuesForProduct(int productId)
         {
-            return productRepo.Get(productId).FeatureValuesForProduct.Select(p => p.Id);
+            return productRepo.Get(productId).FeatureValuesForProduct.Select(p => p.FeatureValueId);
+        }
+
+        private bool IsAnyFeatureValueEqual(List<int> allFeatureValues, List<int> productFeatureValues)
+        {
+            return productFeatureValues.Intersect(allFeatureValues).Any();
+        }
+
+        public void FinishCurrentAssembly(int userId)
+        {
+            var currentAssembly = assemblyRepo.GetAll().Where(a => a.UserId == userId && a.IsFinished == false).FirstOrDefault();
+            currentAssembly.IsFinished = true;
+            assemblyRepo.Update(currentAssembly);
+        }
+
+        public void SetAssemblyRole(string AssemblyRole, string assemblyId)
+        {
+            int asmId = int.Parse(assemblyId);
+            var assembly = assemblyRepo.Get(asmId);
+            assembly.AssemblyRole = (Core.Enums.AssemblyRole)Enum.Parse(typeof(Core.Enums.AssemblyRole), AssemblyRole);
+            assemblyRepo.Update(assembly);
+        }
+
+        public List<Assembly> GetListOfFinishedAssemblies()
+        {
+            return assemblyRepo.GetAll().Where(a => a.IsFinished == true).ToList();
+        }
+
+        public void AddComment(int assemblyId, int userId, string text, string grade)
+        {
+            var assembly = assemblyRepo.Get(assemblyId);
+            var user = userRepo.Get(userId);
+            assembly.Comments.Add(new Comment()
+            {
+                AddDate = DateTime.Now,
+                Assembly = assembly,
+                AssemblyGrade = (Core.Enums.AssemblyGrade)Enum.Parse(typeof(Core.Enums.AssemblyGrade), grade),
+                AssemblyId = assemblyId,
+                Content = text,
+                UserId = userId,
+                User = user
+            });
+            assemblyRepo.Update(assembly);
+        }
+
+        public Assembly GetAsseblyById(int id)
+        {
+            return assemblyRepo.Get(id);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace ComputerShop.Web.Controllers
         [HttpGet]
         public ActionResult MakeAnOrder(int basketId)
         {
-            return View(new MakeOrderViewModel() { Basket = shopService.GetBasketById(basketId), BasketId = basketId });
+            return View(new MakeOrderViewModel() { Basket = shopService.GetBasketById(basketId), BasketId = basketId, Sum = shopService.SumProductsFromBasket(basketId) });
         }
 
         [HttpPost]

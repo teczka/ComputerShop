@@ -1,4 +1,4 @@
-﻿
+﻿@model ComputerShop.Web.Models.AssemblyViewModels.AssembliesViewModel
 @{
     ViewBag.Title = "AssemblyMenu";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,11 +10,59 @@
             <br />
             <div class="btn-group-vertical">
                 <a href="@Url.Action("CreateNewAssembly", "Assembly", new { userId = WebSecurity.CurrentUserId })" class="btn btn-default">Utwórz nową konfigurację</a>
-                <a href="#" class="btn btn-default">Pokaż zapisane konfiguracje</a>
             </div>
         </div>
         <div class="col-sm-6">
-            Tutaj będą ostatnio dodane konfiguracje
+            <h3>Ostatnio dodane konfiguracje</h3>
+            <div class="panel-group">
+                @foreach (var assembly in Model.Assemblies)
+                {
+                    switch (assembly.AssemblyRole)
+                    {
+                        case ComputerShop.Core.Enums.AssemblyRole.Gamingowy:
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">Gamingowy<span class="pull-right">Ocena klientów @Html.Stars(Html.CountMarks(assembly))</span></div>
+                                <div class="panel-body">
+                                    @foreach (var item in assembly.Products)
+                                    {
+                                        @String.Concat(item.Producent.Name, " ", item.Name) <br />
+                                    }
+                                    <br /><a href="@Url.Action("AddComment", "Assembly", new { assemblyId = assembly.Id, userId = WebSecurity.CurrentUserId  })">Dodaj oceń i dodaj komentarz</a>
+                                    <span class="pull-right">Autor: @assembly.User.Name @assembly.User.Surname</span>
+                                </div>
+                            </div>
+                            break;
+                        case ComputerShop.Core.Enums.AssemblyRole.Biurowy:
+                            <div class="panel panel-success">
+                                <div class="panel-heading">Biurowy<span class="pull-right">Ocena klientów @Html.Stars(Html.CountMarks(assembly))</span></div>
+                                <div class="panel-body">
+                                    @foreach (var item in assembly.Products)
+                                    {
+                                        @String.Concat(item.Producent.Name, " ", item.Name) <br />
+                                    }
+                                    <br /><a href="@Url.Action("AddComment", "Assembly", new { assemblyId = assembly.Id, userId = WebSecurity.CurrentUserId })">Dodaj oceń i dodaj komentarz</a>
+                                    <span class="pull-right">Autor: @assembly.User.Name @assembly.User.Surname</span>
+                                </div>
+                            </div>
+                            break;
+                        case ComputerShop.Core.Enums.AssemblyRole.Multimedialny:
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">Multimedialny<span class="pull-right">Ocena klientów @Html.Stars(Html.CountMarks(assembly))</span></div>
+                                <div class="panel-body">
+                                    @foreach (var item in assembly.Products)
+                                    {
+                                        @String.Concat(item.Producent.Name, " ", item.Name) <br />
+                                    }
+                                    <br /><a href="@Url.Action("AddComment", "Assembly", new { assemblyId = assembly.Id, userId = WebSecurity.CurrentUserId  })">Dodaj oceń i dodaj komentarz</a>
+                                    <span class="pull-right">Autor: @assembly.User.Name @assembly.User.Surname</span>
+                                </div>
+                            </div>
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            </div>
         </div>
     </div>
 </div>

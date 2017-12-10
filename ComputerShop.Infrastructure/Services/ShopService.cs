@@ -144,5 +144,19 @@ namespace ComputerShop.Infrastructure.Services
             basket.IsClosed = true;
             basketRepo.SaveChanges();
         }
+
+        public decimal SumProductsFromBasket(int basketId)
+        {
+            var basket = basketRepo.Get(basketId);
+            decimal sum = 0;
+            foreach (var product in basket.BasketItems)
+            {
+                decimal price = product.Product.Price;
+                int amount = product.AmountOfProducts;
+                decimal value = price * amount;
+                sum += value;
+            }
+            return sum;
+        }
     }
 }
